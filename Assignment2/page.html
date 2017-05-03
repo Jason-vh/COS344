@@ -1,12 +1,14 @@
 <!DOCTYPE html>
+<!--suppress JSUnresolvedFunction, JSUnresolvedVariable, JSUnfilteredForInLoop -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Assignment 1</title>
 
-    <script type="text/javascript" src="js/glMatrix-0.9.5.min.js"></script>
-    <script type="text/javascript" src="js/webgl-utils.js"></script>
+    <!--<script type="text/javascript" src="js/glMatrix-0.9.5.min.js"></script>-->
+    <script type="text/javascript" src="js/gl-matrix.js"></script>
     <script type="text/javascript" src="js/webgl-debug.js"></script>
+    <script type="text/javascript" src="js/webgl-utils.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="js/semantic.min.js"></script>
     <link href="css/semantic.min.css" type="text/css" rel="stylesheet">
@@ -53,42 +55,9 @@
                             Rotation
                         </h3>
                     </div>
-                    <!--<div class="five wide column">-->
-                        <!--<label>-->
-                            <!--<span style="font-size: large">X</span>-->
-                            <!--<input type="range" min="0" max="360" value="0" oninput="-->
-                        <!--if (animatePyramid)-->
-                            <!--vRotation[0][0] = this.value;-->
-                        <!--if (animateCube)-->
-                            <!--vRotation[1][0] = this.value;-->
-                    <!--">-->
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="six wide column">-->
-                        <!--<label>-->
-                            <!--<span style="font-size: large">Y</span>-->
-                            <!--<input type="range" min="0" max="360" value="0" oninput="-->
-                        <!--if (animatePyramid)-->
-                            <!--vRotation[0][1] = this.value;-->
-                        <!--if (animateCube)-->
-                            <!--vRotation[1][1] = this.value;-->
-                    <!--">-->
 
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="five wide column">-->
-                        <!--<label>-->
-                            <!--<span style="font-size: large">Z</span>-->
-                            <!--<input type="range" min="0" max="360" value="0" oninput="-->
-                        <!--if (animatePyramid)-->
-                            <!--vRotation[0][2] = this.value;-->
-                        <!--if (animateCube)-->
-                            <!--vRotation[1][2] = this.value;-->
-                    <!--">-->
-                        <!--</label>-->
-                    <!--</div>-->
+
                     <div class="sixteen wide column">
-                    <!--<div class="ui divider"></div>-->
                         <button class="ui button grey" onclick="
                             rotateX = !rotateX;
                             $(this).toggleClass('orange');
@@ -106,155 +75,127 @@
                         ">Change Direction</button>
                     </div>
                 </div>
-            </div>
-            <!--<div class="ui segment center aligned" id = "scale_inputs">-->
-                <!--<div class="ui grid">-->
-                    <!--<div class="sixteen wide column" onclick="-->
-                        <!--$(this).siblings().toggle(100);-->
-                    <!--">-->
-                        <!--<h3 class="ui dividing header">-->
-                            <!--Scaling-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                    <!--<div class="five wide column">-->
-                        <!--<label>-->
-                            <!--<span style="font-size: large">X</span>-->
-                            <!--<input type="range" min="0.1" max="5" value="1" step="0.1" oninput="-->
-                                <!--if (animatePyramid)-->
-                                    <!--vScaling[0][0] = parseInt(this.value);-->
-                                <!--if (animateCube)-->
-                                    <!--vScaling[1][0] = parseInt(this.value);-->
-                            <!--">-->
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="six wide column">-->
-                        <!--<label>-->
-                            <!--<span style="font-size: large">Y</span>-->
-                            <!--<input type="range" min="0.1" max="5" value="1" step="0.1" oninput="-->
-                                <!--if (animatePyramid)-->
-                                    <!--vScaling[0][1] = parseInt(this.value);-->
-                                <!--if (animateCube)-->
-                                    <!--vScaling[1][1] = parseInt(this.value);-->
-                            <!--">-->
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="five wide column">-->
-                        <!--<label>-->
-                            <!--<span style="font-size: large">Z</span>-->
-                            <!--<input type="range" min="0.1" max="5" value="1" step="0.1" oninput="-->
-                                <!--if (animatePyramid)-->
-                                    <!--vScaling[0][2] = parseInt(this.value);-->
-                                <!--if (animateCube)-->
-                                    <!--vScaling[1][2] = parseInt(this.value);-->
-                          <!--return  ">-->
-                        <!--</label>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="ui segment center aligned" id = "translate_inputs">-->
-                <!--<div class="ui grid">-->
-                    <!--<div class="sixteen wide column" onclick="-->
-                        <!--$(this).siblings().toggle(100);-->
-                    <!--">-->
-                        <!--<h3 class="ui dividing header">-->
-                            <!--Translation-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                    <!--<div class="five wide column">-->
-                        <!--<label>-->
-                            <!--<span style="font-size: large">X</span>-->
-                            <!--<input type="range" min="-5" max="5" value="0" step="0.1" oninput="-->
-                                <!--if (animatePyramid)-->
-                                    <!--vTranslation[0][0] = parseInt(this.value);-->
-                                <!--if (animateCube)-->
-                                    <!--vTranslation[1][0] = parseInt(this.value);-->
-                            <!--">-->
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="six wide column">-->
-                        <!--<label>-->
-                            <!--<span style="font-size: large">Y</span>-->
-                            <!--<input type="range" min="-5" max="5" value="0" step="0.1" oninput="-->
-                                <!--if (animatePyramid)-->
-                                    <!--vTranslation[0][1] = parseInt(this.value);-->
-                                <!--if (animateCube)-->
-                                    <!--vTranslation[1][1] = parseInt(this.value);-->
-                            <!--">-->
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="five wide column">-->
-                        <!--<label>-->
-                            <!--<span style="font-size: large">Z</span>-->
-                            <!--<input class = "ui" type="range" min="-5" max="5" value="0" step="0.1" oninput="-->
-                                <!--if (animatePyramid)-->
-                                    <!--vTranslation[0][2] = parseInt(this.value);-->
-                                <!--if (animateCube)-->
-                                    <!--vTranslation[1][2] = parseInt(this.value);-->
-                            <!--">-->
-                        <!--</label>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="ui segment center aligned" id = "shear_inputs">-->
-                <!--<div class="ui grid">-->
-                    <!--<div class="sixteen wide column" onclick="-->
-                        <!--$(this).siblings().toggle(100);-->
-                    <!--">-->
-                        <!--<h3 class="ui dividing header">-->
-                            <!--Shearing-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                    <!--<div class="five wide column">-->
-                        <!--<label>-->
-                            <!--<span style="font-size: large">X</span>-->
-                            <!--<input type="range" min="-3" max="3" value="0" step="0.1" oninput="-->
-                                <!--if (animatePyramid)-->
-                                    <!--vShearing[0][0] = parseInt(this.value);-->
-                                <!--if (animateCube)-->
-                                    <!--vShearing[1][0] = parseInt(this.value);-->
-                                <!--initBuffers();-->
-                            <!--">-->
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="six wide column">-->
-                        <!--<label>-->
-                            <!--<span style="font-size: large">Y</span>-->
-                            <!--<input type="range" min="-3" max="3" value="0" step="0.1" oninput="-->
-                                <!--if (animatePyramid)-->
-                                    <!--vShearing[0][1] = parseInt(this.value);-->
-                                <!--if (animateCube)-->
-                                    <!--vShearing[1][1] = parseInt(this.value);-->
-                                <!--initBuffers();-->
-                            <!--">-->
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="five wide column">-->
-                        <!--<label>-->
-                            <!--<span style="font-size: large">Z</span>-->
-                            <!--<input class = "ui" type="range" min="-3" max="3" value="0" step="0.1" oninput="-->
-                                <!--if (animatePyramid)-->
-                                    <!--vShearing[0][2] = parseInt(this.value);-->
-                                <!--if (animateCube)-->
-                                    <!--vShearing[1][2] = parseInt(this.value);-->
-                                <!--initBuffers();-->
-                            <!--">-->
-                        <!--</label>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <div class="ui segment" id = "projectbuttons">
-                <button class="ui toggle button grey" id="orthogonal" onclick="
-                    setProjector('orthogonal');
-                ">Orthogonal</button>
-                <button class="ui toggle button grey" id="perspective" onclick="
-                    setProjector('perspective');
-                ">Perspective</button>
-                <button class="ui toggle button grey" id="oblique" onclick="
-                    setProjector('oblique');
-                ">Oblique</button>
-                <button class="ui toggle button grey" id="isometric" onclick="
-                    setProjector('isometric');
-                ">Isometric</button>
+                <div>
+                    <div class="sixteen wide column">
+                        <p id = "help"></p>
+                    </div>
+                </div>
+                <div class = "ui grid" id = "orth_inputs">
+                    <div class="sixteen wide column">
+                        <h3 class="ui dividing header">
+                            Orthogonal Options
+                        </h3>
+                    </div>
+                    <div class="five wide column">
+                        <label>
+                            <span>Left</span>
+                            <input type="range" min="-10" max="10" value="-4" oninput="ortho.left = parseInt(this.value);">
+                        </label>
+                    </div>
+                    <div class="six wide column">
+                        <label>
+                            <span>Top</span>
+                            <input type="range" min="-10" max="10" value="2" oninput="ortho.top = parseInt(this.value);">
+                        </label>
+                    </div>
+                    <div class="five wide column">
+                        <label>
+                            <span>Near</span>
+                            <input type="range" min="-10" max="10" value="0.1" oninput="ortho.near = parseInt(this.value);">
+                        </label>
+                    </div>
+                    <div class="five wide column">
+                        <label>
+                            <span>Right</span>
+                            <input type="range" min="-10" max="10" value="4" oninput="ortho.right = parseInt(this.value);">
+                        </label>
+                    </div>
+                    <div class="six wide column">
+                        <label>
+                            <span>Bottom</span>
+                            <input type="range" min="-10" max="10" value="2" oninput="ortho.bottom = parseInt(this.value);">
+                        </label>
+                    </div>
+                    <div class="five wide column">
+                        <label>
+                            <span>Far</span>
+                            <input type="range" min="-10" max="200" value="100" oninput="ortho.far = parseInt(this.value);">
+                        </label>
+                    </div>
+                </div>
+                <div class = "ui grid" id = "oblique_inputs" style="display: none">
+                    <div class="sixteen wide column">
+                        <h3 class="ui dividing header">
+                            Oblique Options
+                        </h3>
+                    </div>
+                    <div class="four wide column">
+                        <label>
+                            <span>Left</span>
+                            <input type="range" min="-10" max="10" value="-4" oninput="obliqueNumbers.left = parseInt(this.value);">
+                        </label>
+                    </div>
+                    <div class="four wide column">
+                        <label>
+                            <span>Top</span>
+                            <input type="range" min="-10" max="10" value="2" oninput="obliqueNumbers.top = parseInt(this.value);">
+                        </label>
+                    </div>
+                    <div class="four wide column">
+                        <label>
+                            <span>Near</span>
+                            <input type="range" min="-10" max="10" value="0.1" oninput="obliqueNumbers.near = parseInt(this.value);">
+                        </label>
+                    </div>
+                    <div class="four wide column">
+                        <label>
+                            <span>Theta</span>
+                            <input type="range" min="0" max="360" value="60" oninput="obliqueNumbers.theta = parseInt(this.value);">
+                        </label>
+                    </div>
+                    <div class="four wide column">
+                        <label>
+                            <span>Right</span>
+                            <input type="range" min="-10" max="10" value="4" oninput="obliqueNumbers.right = parseInt(this.value);">
+                        </label>
+                    </div>
+                    <div class="four wide column">
+                        <label>
+                            <span>Bottom</span>
+                            <input type="range" min="-10" max="10" value="2" oninput="obliqueNumbers.bottom = parseInt(this.value);">
+                        </label>
+                    </div>
+                    <div class="four wide column">
+                        <label>
+                            <span>Far</span>
+                            <input type="range" min="-10" max="200" value="100" oninput="obliqueNumbers.far = parseInt(this.value);">
+                        </label>
+                    </div>
+                    <div class="four wide column">
+                        <label>
+                            <span>Phi</span>
+                            <input type="range" min="0" max="360" value="15" oninput="obliqueNumbers.phi = parseInt(this.value);">
+                        </label>
+                    </div>
+                </div>
+                <div class="ui segment">
+                    <p id="help"></p>
+                </div>
+                    <div class="ui segment" id = "projectbuttons">
+                        <button class="ui toggle button grey" id="orthogonal" onclick="
+                            setProjector('orthogonal');
+                        ">Orthogonal</button>
+                        <button class="ui toggle button grey" id="perspective" onclick="
+                            setProjector('perspective');
+                        ">Perspective</button>
+                        <button class="ui toggle button grey" id="oblique" onclick="
+                            setProjector('oblique');
+                        ">Oblique</button>
+                        <button class="ui toggle button grey" id="isometric" onclick="
+                            setProjector('isometric');
+                        ">Isometric</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -265,19 +206,19 @@
     var vScaling = [[1, 1, 1], [1, 1, 1]];
     var vTranslation = [[0, 0, 0], [0, 0, 0]];
     var vShearing = [[0,0,0],[0,0,0]];
-    var animatePyramid = false;
-    var animateCube = false;
     var rotationDirection = 3;
     var rotateY = false;
     var rotateX = false;
     var rotateZ = false;
     var bHouseMode = false;
-    var flipped = false;
 
     var projectOrthogonal = true;
     var projectPerspective = false;
     var projectOblique = false;
     var projectIsometric = false;
+
+    var ortho = {left: -4, right: 4, bottom: -2, top: 2, near: 0.1, far: 100};
+    var obliqueNumbers = {theta: 90, phi: 90, left: -4, right: 4, bottom: -2, top: 2, near: 0.1, far: 100};
 
     function webGLStart() {
         var canvas = document.getElementById("canvas");
@@ -290,25 +231,6 @@
         gl.enable(gl.DEPTH_TEST);
 
         tick();
-    }
-
-    function houseMode() {
-        $("#housemode").toggleClass("blue");
-        if (!bHouseMode) {
-            $('#affect_cube').hide(100);
-            $('#affect_pyramid').hide(100);
-            bHouseMode = !bHouseMode;
-            $('#flip').show(100);
-            animateCube = true;
-            animatePyramid = true;
-            $("#affect_cube").addClass("orange");
-            $("#affect_pyramid").addClass("orange");
-        } else {
-            $('#affect_cube').show(100);
-            $('#affect_pyramid').show(100);
-            $('#flip').hide(100);
-            bHouseMode = !bHouseMode;
-        }
     }
 
     var lastTime = 0;
@@ -443,8 +365,7 @@
     var pMatrix = mat4.create();
 
     function mvPushMatrix() {
-        var copy = mat4.create();
-        mat4.set(mvMatrix, copy);
+        var copy = mat4.copy(mat4.create(), mvMatrix);
         mvMatrixStack.push(copy);
     }
 
@@ -544,16 +465,16 @@
         gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
         vertices = [
             // Front face
-            -1.0-vShearing[1][0], -1.0+vShearing[1][1],  1.0+vShearing[1][2],
-            1.0-vShearing[1][0], -1.0-vShearing[1][1],  1.0+vShearing[1][2],
-            1.0+vShearing[1][0],  1.0-vShearing[1][1],  1.0-vShearing[1][2],
-            -1.0+vShearing[1][0],  1.0+vShearing[1][1],  1.0-vShearing[1][2],
+            -1.0, -1.0,  1.0,
+            1.0, -1.0,  1.0,
+            1.0,  1.0,  1.0,
+            -1.0,  1.0,  1.0,
 
             // Back face
-            -1.0-vShearing[1][0], -1.0+vShearing[1][1], -1.0+vShearing[1][2],
-            -1.0+vShearing[1][0],  1.0+vShearing[1][1], -1.0-vShearing[1][2],
-            1.0+vShearing[1][0],  1.0-vShearing[1][1], -1.0-vShearing[1][2],
-            1.0-vShearing[1][0], -1.0-vShearing[1][1], -1.0+vShearing[1][2],
+            -1.0, -1.0+vShearing[1][1], -1.0+vShearing[1][2],
+            -1.0,  1.0+vShearing[1][1], -1.0-vShearing[1][2],
+            1.0,  1.0-vShearing[1][1], -1.0-vShearing[1][2],
+            1.0, -1.0-vShearing[1][1], -1.0+vShearing[1][2],
 
             // Top face
             -1.0+vShearing[1][0],  1.0+vShearing[1][1], -1.0-vShearing[1][2],
@@ -620,52 +541,53 @@
     }
 
 
-    var rPyramid = 0;
-    var rCube = 0;
-
     function drawScene() {
 //        initBuffers();
         gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
+        h.html("");
+        mat4.identity(pMatrix);
+
         if (projectPerspective) {
             perspective(pMatrix, 45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0);
+            h.html(matToStr(pMatrix));
         } else if (projectOrthogonal) {
-            orthographic(pMatrix, -4.0, 4.0, -2.0, 2.0, 0.1, 100);
+            orthographic(pMatrix, ortho.left, ortho.right, ortho.bottom, ortho.top, ortho.near, ortho.far);
+            h.html(matToStr(pMatrix));
         } else if (projectOblique) {
-            var theta = 45;
-            var fi = 45;
-            var near = 1;
-            // Todo
-            orthographic(pMatrix, -4.0 - near*cot(theta), 4.0  + near*cot(theta), -2.0  - near*cot(theta), 2.0  + near*cot(theta), 0.1, 100);
+//            oblique(pMatrix, 60, -4.0, 4.0, -2.0, 2.0, 0.1, 100);
+            var m = mat4.create();
+            var n = mat4.create();
+            m = oblique(m, obliqueNumbers.theta, obliqueNumbers.phi);
+            n = orthographic(n, obliqueNumbers.left - obliqueNumbers.near*cot(obliqueNumbers.theta),
+                                obliqueNumbers.right-obliqueNumbers.near*cot(obliqueNumbers.theta),
+                                obliqueNumbers.bottom-obliqueNumbers.near*cot(obliqueNumbers.phi),
+                                obliqueNumbers.top-obliqueNumbers.near*cot(obliqueNumbers.phi),
+                                obliqueNumbers.near, obliqueNumbers.far);
+            h.html(matToStr(n));
+            mat4.multiply(pMatrix, m, n);
         } else if (projectIsometric) {
             // Todo
             perspective(pMatrix, 45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0);
         }
 
+//        h.html(matToStr(pMatrix));
         mat4.identity(mvMatrix);
 
-        if (!bHouseMode) {
-            mat4.translate(mvMatrix, [-1.5, 0.0, -8.0]);
-            mvPushMatrix();
-        } else {
-            mat4.translate(mvMatrix, [0.0, 1.0, -8.0]);
-        }
-
-        if (flipped) {
-            mat4.scale(mvMatrix, [-1, 1, 1]);
-        }
-
+//        h.html(mat4.str(mvMatrix));
+        mvMatrix = mat4.translate(mvMatrix, mvMatrix, new vec3.fromValues(-1.5,0.0,-6.0));
+//        h.html(h.html() + "<br>" + mat4.str(mvMatrix));
+        mvPushMatrix();
         // Translations
-        mat4.translate(mvMatrix, vTranslation[0]);
+//        mat4.translate(mvMatrix, mvMatrix, vTranslation[0]);
 
         // Rotations
-        mat4.rotate(mvMatrix, degToRad(vRotation[0][0]), [1,0,0]);
-        mat4.rotate(mvMatrix, degToRad(vRotation[0][1]), [0,1,0]);
-        mat4.rotate(mvMatrix, degToRad(vRotation[0][2]), [0,0,1]);
-
+        mat4.rotate(mvMatrix, mvMatrix, degToRad(vRotation[0][0]), vec3.fromValues(1,0,0));
+        mat4.rotate(mvMatrix, mvMatrix, degToRad(vRotation[0][1]), vec3.fromValues(0,1,0));
+        mat4.rotate(mvMatrix, mvMatrix, degToRad(vRotation[0][2]), vec3.fromValues(0,0,1));
         // Scaling
-        mat4.scale(mvMatrix, vScaling[0]);
+//        mat4.scale(mvMatrix, mvMatrix, vScaling[0]);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexPositionBuffer);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, pyramidVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
@@ -676,23 +598,16 @@
         setMatrixUniforms();
         gl.drawArrays(gl.TRIANGLES, 0, pyramidVertexPositionBuffer.numItems);
 
-
-        if (!bHouseMode) {
-            mvPopMatrix();
-            mat4.translate(mvMatrix, [3.0, 0.0, 0.0]);
-        } else {
-            mat4.translate(mvMatrix, [0.0, -2.0, 0.0]);
-        }
+        mvPopMatrix();
+        mvMatrix = mat4.translate(mvMatrix, mvMatrix, new vec3.fromValues(3.0, 0.0, -4.0));
 
         mvPushMatrix();
 
-        if (!bHouseMode) {
-            mat4.translate(mvMatrix, vTranslation[1]);
-            mat4.rotate(mvMatrix, degToRad(vRotation[1][0]), [1,0,0]);
-            mat4.rotate(mvMatrix, degToRad(vRotation[1][1]), [0,1,0]);
-            mat4.rotate(mvMatrix, degToRad(vRotation[1][2]), [0,0,1]);
-            mat4.scale(mvMatrix, vScaling[1]);
-        }
+//        mat4.translate(mvMatrix, mvMatrix, vTranslation[1]);
+        mat4.rotate(mvMatrix, mvMatrix, degToRad(vRotation[0][0]), vec3.fromValues(1,0,0));
+        mat4.rotate(mvMatrix, mvMatrix, degToRad(vRotation[0][1]), vec3.fromValues(0,1,0));
+        mat4.rotate(mvMatrix, mvMatrix, degToRad(vRotation[0][2]), vec3.fromValues(0,0,1));
+//        mat4.scale(mvMatrix, mvMatrix, vScaling[1]);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
@@ -719,29 +634,6 @@
 //        ];
 //    }
 
-    function orthographic2(out, left, right, bottom, top, near, far) {
-        out||(out=mat4.create());
-        var width = right - left;
-        var height = top - bottom;
-        var depth = far - near;
-        out[0] = 2 / width;
-        out[1] = 0;
-        out[2] = 0;
-        out[3] = 0;
-        out[4] = 0;
-        out[5] = 2 / height;
-        out[6] = 0;
-        out[7] = 0;
-        out[8] = 0;
-        out[9] = 0;
-        out[10] = -2 / depth;
-        out[11] = 0;
-        out[12] = - (left + right) / width;
-        out[13] = -(top + bottom) / height;
-        out[14] = -(far + near) / depth;
-        out[15] = 1;
-    }
-
     function orthographic(out, left, right, bottom, top, near, far) {
         var w = right - left;
         var h = top - bottom;
@@ -766,7 +658,6 @@
         out[13] = (top+bottom)/h;
         out[14] = -(far+near)/d;
         out[15] = 1;
-        return out;
     }
 
     function perspective(out, fovy, aspect, near, far) {
@@ -775,16 +666,14 @@
         return getViewableShape(out,-aspect,aspect,-fovy,fovy,near,far);
     }
 
-    function oblique(out, theta) {
-        var P = [1,             0, 0, 0,
-                 0,             1, 0, 0,
-                 cot(theta),    cot(theta), 0, 0,
-                 0,             0, 0, 1];
-        var ST = mat4.create();
-        orthographic(ST, -4.0, 4.0, -2.0, 2.0, 0.1, 100);
-        out = P;
-        mat4.multiplyVec4(out, ST, out);
-    }
+    var h = $("#help");
+//    function oblique(out, theta, left, right, bottom, top, near, far) {
+//        var m = mat4.create();
+//        var n = mat4.create();
+//        m = obliqueMatrix(pMatrix, 15, 60);
+//        n = mat4.ortho(pMatrix, -2.0, 2.0, -2.0, 2.0, 0.1, 100);
+//        pMatrix = mat4.multiply(m, m, n);
+//    }
 
     function getViewableShape(out, left, right, bottom, top, near, far) {
         var width = right-left;
@@ -809,11 +698,46 @@
         return out;
     }
 
+    function matToStr(mat) {
+        return mat[0] + ", " + mat[1] + ", " + mat[2] + ", " + mat[3] + "<br>" +
+        mat[4] + ", " + mat[5] + ", " + mat[6] + ", " + mat[7] + "<br>" +
+        mat[8] + ", " + mat[9] + ", " + mat[10] + ", " + mat[11] + "<br>" +
+        mat[12] + ", " + mat[13] + ", " + mat[14] + ", " + mat[15];
+    }
+
+    function oblique(out, theta, phi){
+        var t = degToRad(theta);
+        var p = degToRad(phi);
+        var cotT = -1/Math.tan(t);
+        var cotP = -1/Math.tan(p);
+
+        out[0] = 1;
+        out[1] = 0;
+        out[2] = cotT;
+        out[3] = 0;
+        out[4] = 0;
+        out[5] = 1;
+        out[6] = cotP;
+        out[7] = 0;
+        out[8] = 0;
+        out[9] = 0;
+        out[10] = 1;
+        out[11] = 0;
+        out[12] = 0;
+        out[13] = 0;
+        out[14] = 0;
+        out[15] = 1;
+
+        mat4.transpose(out, out);
+        return out;
+    }
+
     function setProjector(proj) {
         if (proj === "orthogonal") {
             setAllFalse();
             $("#orthogonal").addClass("blue");
             projectOrthogonal = true;
+            $("#orth_inputs").show(100);
         }
         if (proj === "perspective") {
             setAllFalse();
@@ -824,10 +748,11 @@
             setAllFalse();
             $("#oblique").addClass("blue");
             projectOblique = true;
+            $("#oblique_inputs").show(100);
         }
         if (proj === "isometric") {
             setAllFalse();
-            $("#oblique").addClass("blue");
+            $("#isometric").addClass("blue");
             projectIsometric = true;
         }
     }
@@ -838,6 +763,8 @@
         projectOrthogonal = false;
         projectPerspective = false;
         $("#projectbuttons").find(".button").removeClass("blue");
+        $("#orth_inputs").hide(100);
+        $("#oblique_inputs").hide(100);
     }
 
     function cot(aValue) {

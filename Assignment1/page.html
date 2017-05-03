@@ -196,6 +196,9 @@
             </div>
             <div class="ui segment center aligned" id = "shear_inputs">
                 <div class="ui grid">
+                    <div class="sixteen wide column">
+                        <p id = "help">a</p>
+                    </div>
                     <div class="sixteen wide column" onclick="
                         $(this).siblings().toggle(100);
                     ">
@@ -640,6 +643,7 @@
     var rPyramid = 0;
     var rCube = 0;
 
+    var h = $("#help");
     function drawScene() {
 //        initBuffers();
         gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
@@ -652,7 +656,9 @@
 
         if (!bHouseMode) {
             mat4.translate(mvMatrix, [-1.5, 0.0, -8.0]);
+            h.html(mat4.str(mvMatrix));
             mvPushMatrix();
+            h.html(h.html() + "<br>" + mat4.str(mvMatrix));
         } else {
             mat4.translate(mvMatrix, [0.0, 1.0, -8.0]);
         }
@@ -661,9 +667,10 @@
             mat4.scale(mvMatrix, [-1, 1, 1]);
         }
 
+
+
         // Translations
         mat4.translate(mvMatrix, vTranslation[0]);
-
         // Rotations
         mat4.rotate(mvMatrix, degToRad(vRotation[0][0]), [1,0,0]);
         mat4.rotate(mvMatrix, degToRad(vRotation[0][1]), [0,1,0]);
